@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{message}}</h1>
+        <h2>{{name}}</h2>
+    </div>
+    <div>{{message}}</div>
+    <script src="../js/vue.js"></script>
+    <script>
+        //es6语法：let 定义变量；const 定义常量
+        // 声明式编程
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: "Hello Vue!",
+                name: '李银河'
+            }
+        })
+    </script>
+</body>
+
+
+</html>
