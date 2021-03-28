@@ -12,6 +12,12 @@
         <!-- <img src="{{imgURL}}" alt=""> -->
         <!-- 正确的做法：使用v-bind指令 -->
         <img v-bind:src="imgURL" alt="">
+        <a v-bind:href="aHref">百度一下</a>
+        <!-- 语法糖写法 -->
+        <img :src="imgURL" alt="">
+        <a :href="aHref">百度一下</a>
+
+
     </div>
     <script src="../js/vue.js"></script>
     <script>
@@ -19,7 +25,8 @@
             el:'#app',
             data:{
                 message:'你好啊',
-                imgURL:'http://www.newsimg.cn/common/share/logo4share.jpg'
+                imgURL:'http://www.newsimg.cn/common/share/logo4share.jpg',
+                aHref:'http://www.baidu.com'
             }
         })
     </script>
