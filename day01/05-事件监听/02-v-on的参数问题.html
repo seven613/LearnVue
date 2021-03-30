@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- 1.事件调用方法，没有参数 ,实现的功能相同-->
+        <button @click='btn1Click()'>按钮1</button>
+        <button @click='btn1Click'>按钮1</button>
+        <!-- 2.方法定义时有参数，但是调用的时候没有传入，vue会将浏览器默认的事件当作参数传进来 -->
+        <button @click='btn2Click'>按钮2</button>
+        <!-- undefined -->
+        <button @click='btn2Click()'>按钮2</button>
+        <button @click='btn2Click(123)'>按钮2</button>
+        <!-- 3.传入参数需要event和自定义参数 -->
+        <button @click="btn3Click('123',$event)">按钮3</button>
+        <button>按钮4</button>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                btn1Click() {
+                    console.log('btn1Click');
+                },
+                btn2Click(abc) {
+                    console.log('btn2Click','-------',abc);
+
+                },
+                btn3Click(abc,event) {
+                    console.log('btn3Click','-------',abc,event);
+
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

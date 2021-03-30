@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div @click="divClick">aaaa
+            <!-- .stop 修饰符，组织冒泡 -->
+            <button @click.stop='btnClick'>按钮1</button>
+        </div>
+        <br>
+        <form action="baidu" method="post">
+            <!-- 2. .prevent 修饰符 阻止默认事件 -->
+            <input type="submit" value='提交' @click.prevent="submitClick">
+        </form>
+        <!-- 3. .keycode|keyAlias 监听键盘某个键是否被按 -->
+        <input type="text" @keyup.enter="keyUp">
+        <!-- 4. .once 监听事件只执行一次 -->
+        <button @click.once="btn2Click">按钮2</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                btnClick() {
+                    console.log('btnClick');
+                },
+                divClick() {
+                    console.log('divClick');
+                },
+                submitClick() {
+                    console.log('submitClick');
+                },
+                keyUp() {
+                    console.log('keyUp');
+                },
+                btn2Click() {
+                    console.log('btn2Click');
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>
