@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li>{{info.name}}</li>
+            <li>{{info.color}}</li>
+            <li>{{info.weight}}</li>
+        </ul>
+        <!-- 1.遍历对象的过程中，如果只获取一个值，获取的是value -->
+        <ul>
+            <li v-for="item in info">{{item}}</li>
+        </ul>
+        <!-- 2.遍历对象，获取value和key -->
+        <ul>
+            <li v-for="(value,key) in info">{{value}} -- {{key}}</li>
+        </ul>
+        <!-- 3.遍历对象，获取value、key、index -->
+        <ul>
+            <li v-for="(value,key,index) in info">{{value}} -- {{key}} -- {{index}}</li>
+        </ul>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                info: {
+                    name: '苹果',
+                    color: 'red',
+                    weight: '150g'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
