@@ -11,7 +11,7 @@
 <body>
     <div id="app">
         <!-- <input type="text" v-model="message"> -->
-        <input type="text" :value="message" @input="valueChange">
+        <input type="text" :value="message" @input="message =$event.target.value">
         {{message }}
     </div>
     <script src="../js/vue.js"></script>
