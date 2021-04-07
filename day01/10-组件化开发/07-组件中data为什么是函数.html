@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cnp></cnp>
+        <cnp></cnp>
+        <cnp></cnp>
+        <cnp></cnp>
+    </div>
+    <template id="cnp">
+        <div>
+            <h2>当前计数是：{{counter}}</h2>
+            <button @click="increment">+</button>
+            <button @click="decrement">-</button>
+        </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.component('cnp', {
+            template: '#cnp',
+            // 子组件的data必须以函数形式
+            data() {
+                return {
+                    counter:0
+                }
+            },
+            methods: {
+                increment() {
+                    this.counter++
+                },
+                decrement() {
+                    this.counter--
+                }
+            },
+        })
+        const app = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>
