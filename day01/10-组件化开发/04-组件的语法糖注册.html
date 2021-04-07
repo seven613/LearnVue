@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cnp1></cnp1>
+        <cnp2></cnp2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.component('cnp1', {
+            template: `
+            <div>
+            <h2>我是标题1</h2>
+            <p>我是内容1，哈哈哈</p>
+            </div>`
+        })
+
+        const app = new Vue({
+            el: '#app',
+            components: {
+                cnp2: {
+                    template: `
+            <div>
+            <h2>我是标题2</h2>
+            <p>我是内容2，哈哈哈</p>
+            </div>
+            `
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
