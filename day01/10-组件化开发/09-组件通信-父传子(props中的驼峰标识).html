@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 引用子组件，引用的时候，驼峰写法要改完断横线 -->
+        <cpn :c-info="info" :child-my-message="message"></cpn>
+    </div>
+    <!-- 定义子组件的模版信息 -->
+    <template id="cpn">
+        <div>
+            <!-- 引用子组件的数据,驼峰写法 -->
+            <h2>{{cInfo}}</h2>
+            <h2>{{childMyMessage}}</h2>
+        </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        // 定义子组件
+        const cpn = {
+            template: '#cpn', //子组件的模版
+            // 父传子数据
+            props: {
+                // 驼峰写法，引用的时候要用短横线
+                cInfo: {
+                    type: Object, //数据类型
+                    default () { //默认数据
+                        return {}
+                    }
+                },
+                childMyMessage:{
+                    type:String,
+                    default(){
+                        return 'aaaaaaa'
+                    }
+                }
+            }
+        }
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message:'你好',
+                info: {
+                    name: 'aaa',
+                    age: 23,
+                    height: 1.66
+                }
+            },
+            // 子组件注册
+            components: {
+                cpn
+            }
+        })
+    </script>
+</body>
+
+</html>
