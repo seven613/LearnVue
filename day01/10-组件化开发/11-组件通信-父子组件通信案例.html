@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn :childnum1="fathernum1" :childnum2="fathernum2" @fathernum1changed="fathernum1changed"
+            @fathernum2changed="fathernum2changed"></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <h2>props-childnum1:{{childnum1}}</h2>
+            <h2>data-tchildnum1:{{tchildnum1}}</h2>
+            <!-- <input type="text" v-model="tchildnum1"> -->
+            <input type="text" :value="tchildnum1" @input="childnum1changed">
+            <h2>props-childnum2:{{childnum2}}</h2>
+            <h2>data-childnum2:{{tchildnum2}}</h2>
+            <!-- <input type="text" v-model="tchildnum2"> -->
+            <input type="text" :value="tchildnum2" @input="childnum2changed">
+
+        </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                fathernum1: 1,
+                fathernum2: 0
+            },
+            methods: {
+                fathernum1changed(value) {
+                    this.fathernum1 = parseFloat(value)
+                },
+                fathernum2changed(value) {
+                    this.fathernum2 = parseFloat(value)
+                }
+            },
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    props: {
+                        childnum1: Number,
+                        childnum2: Number
+                    },
+                    data() {
+                        return {
+                            tchildnum1: this.childnum1,
+                            tchildnum2: this.childnum2
+                        }
+                    },
+                    methods: {
+                        childnum1changed(event) {
+                            this.tchildnum1 = event.target.value;
+                            this.$emit('fathernum1changed', this.tchildnum1)
+                            this.tchildnum2 = this.tchildnum1 * 100
+                        },
+                        childnum2changed(event) {
+                            this.tchildnum2 = event.target.value;
+                            this.$emit('fathernum2changed', this.tchildnum2)
+                            this.tchildnum1 = this.tchildnum2 / 100
+                        }
+                    },
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>
