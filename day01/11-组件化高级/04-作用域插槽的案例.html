@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <cpn>
+            <!-- 获取子组件的pLanguage,必须使用固定模版template slot-scope="slot" -->
+            <template slot-scope ="slot">
+                <!-- <span v-for="item in slot.data">{{item}} - </span> -->
+                <span>{{slot.data.join(' - ')}}</span>
+            </template>
+        </cpn>
+
+    </div>
+    <template id="cpn">
+        <div>
+            <!-- 此处插槽定义了数据，将被父组件调用 -->
+            <slot :data="pLanguage">
+                <ul>
+                    <li v-for="item in pLanguage">{{item}}</li>
+                </ul>
+            </slot>
+        </div>
+    </template>
+    <script src="../js//vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好'
+            },
+            components:{
+                cpn:{
+                    template:'#cpn',
+                    data(){
+                        return{
+                            pLanguage:['python','java','javascript','ruby','swift','c#','c','c++','object-c']
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
