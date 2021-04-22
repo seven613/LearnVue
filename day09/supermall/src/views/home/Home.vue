@@ -20,14 +20,16 @@ export default {
   },
   data () {
     return {
-      result:null
+      banners:[],
+      recommend:[]
     }
   },
   created () {
     //1.请求多个数据
     getHomeMultidata().then(res => {
-      console.log(res)
-      this.result = res;
+      // console.log(res)
+      this.banners = res.data.banner.list;
+      this.recommend = res.data.recommend.list;
     });
   }
 };
